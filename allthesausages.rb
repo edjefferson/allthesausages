@@ -25,7 +25,7 @@ result = con.query("select lasttweet from lasttweet where id=1")
 readout = result.fetch_row
 
 
-LatestTweet = NBFTweets.search("sausage OR sausages", :result_type => "recent", :since_id => readout[0].to_i  ).results.reverse.each do |status|
+LatestTweet = NBFTweets.search("sausage OR sausages", :count => 3, :result_type => "recent", :since_id => readout[0].to_i  ).results.reverse.each do |status|
   
   puts status.text
   puts status.id
