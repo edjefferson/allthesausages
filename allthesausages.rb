@@ -28,11 +28,9 @@ readout = result.fetch_row
 LatestTweet = NBFTweets.search("sausage", :result_type => "recent", :since_id => readout[0].to_i  ).results.reverse.each do |status|
   
   puts status.text
-  finaltweet = "@#{status.user.username} You are definitely not being funny."
-  puts finaltweet
   puts status.id
   con.query("update lasttweet set lasttweet=#{status.id} where id=1")
   
-  Twitter.retweet(status.id )
+  Twitter.retweet(status.id)
   
 end
